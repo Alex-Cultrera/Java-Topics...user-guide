@@ -5,12 +5,14 @@ public class Loops {
 	public static void main(String[] args) {
 		int z;
 		z=2;
+		int [] zArray = {6, 75, 3, 16, 22, 90};
 		
 		// indefinite iteration
 		WhileLoop wloop = new WhileLoop();
 		System.out.println(wloop.getWhile(z));
 		
 		System.out.println("\n");
+		System.out.println("------------------");
 		
 		// indefinite iteration
 		// The do-while loop is very similar to the while loop
@@ -19,6 +21,7 @@ public class Loops {
 		System.out.println(dloop.getDoWhile(z));
 		
 		System.out.println("\n");
+		System.out.println("------------------");
 				
 		// definite iteration
 		// whenever the iterations are known, we can use the for loop
@@ -28,6 +31,21 @@ public class Loops {
 		// it is also called the entry control loop
 		ForLoop floop = new ForLoop();
 		System.out.println(floop.getFor(z));
+		System.out.println("\n");
+		System.out.println("------------------");
+		
+		
+		// For-each loop
+		// not appropriate when you want to modify the array
+		// does not keep track of the index so we cannot obtain array index using for-each
+		// only iterates forward over the array in single steps
+		// since we do not have a counter variable, we cannot change the traversing flow
+		ForEachLoop feloop = new ForEachLoop();
+		System.out.println(feloop.getForEach(zArray));
+		System.out.println("\n");
+		System.out.println("------------------");
+		
+		
 
 	}
 
