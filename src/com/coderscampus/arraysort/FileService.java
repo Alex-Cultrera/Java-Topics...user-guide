@@ -18,8 +18,8 @@ public class FileService {
 			fileReader = new BufferedReader(new FileReader("celtics.txt"));
 			
 			while ((line = fileReader.readLine()) != null) {
-				String[] lineData = line.split(",");
-				CelticsPlayer player = new CelticsPlayer(lineData[0], lineData[1], lineData[2]);
+				String[] lineData = line.split(", ");
+				CelticsPlayer player = new CelticsPlayer(lineData[0], lineData[1], Integer.parseInt(lineData[2]));
 				players[i] = player;
 				i++;				
 			}
