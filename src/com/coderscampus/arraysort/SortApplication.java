@@ -28,6 +28,9 @@ public class SortApplication {
 		}
 		System.out.println("\n");
 		
+				
+		
+		
 		System.out.println("---- Now, players sorted by games played: -------");
 		Arrays.sort(players, new Comparator<CelticsPlayer>() {
 
