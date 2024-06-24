@@ -1,6 +1,7 @@
 package com.coderscampus.collections;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Consumer;
@@ -25,15 +26,38 @@ public class StreamApplication {
 								  .map(car -> car.getModel())
 								  .collect(Collectors.toList());
 		
-		Set<String> brands = cars.stream()
-								 .map(car -> car.getBrand())
-								 .collect(Collectors.toSet());
-				
+		String brands = cars.stream()
+							.map(car -> car.getBrand())
+							.distinct()
+							.filter(brand -> brand.startsWith("T"))
+							.collect(Collectors.joining(", "));
+		
+		
+		// DON'T DO WHAT YOU SEE BELOW!!! 
+		// It's better to use Java 8 Stream as displayed above!!!
+		Set<String> carBrands = new HashSet<>();
+		for (Car car : cars) {
+			String brand = car.getBrand();
+			carBrands.add(brand);
+			if (brand.startsWith("T")) {
+				carBrands.add(brand);
+			}
+		}
+		String output = "";
+		for (String carBrand : carBrands) {
+//			output = output + carBrand + ", ";
+			output += carBrand + ", ";
+		}
+		output = output.substring(0, output.length()-2);	
+		
 		models.stream()
 			  .forEach(model -> System.out.println(model));
 		System.out.println("-----------");
-		brands.stream()
-			  .forEach(brand -> System.out.println(brand));
+		System.out.println(brands);
+		System.out.println("-----------");
+		System.out.println(output);
+		
+		
 		
 //		example1();
 				
