@@ -1,7 +1,9 @@
 package com.coderscampus.collections;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Consumer;
@@ -12,6 +14,37 @@ public class StreamApplication {
 	// Streams are a way to iterate through an entire collection
 	
 	public static void main(String[] args) {
+		
+		List<List<Integer>> listOfNumbersList = new ArrayList<>();
+		listOfNumbersList.add(Arrays.asList(1,2,3)); 
+		listOfNumbersList.add(Arrays.asList(2,3,4)); 
+		listOfNumbersList.add(Arrays.asList(3,4,5));
+		listOfNumbersList.add(Arrays.asList(4,5,6)); 
+		
+		IntSummaryStatistics sumStats = listOfNumbersList.stream()
+		 						    .flatMap(x -> x.stream())
+//						 			.mapToInt(x -> x.intValue())
+		 						    .mapToInt(Integer::intValue)
+									.summaryStatistics();
+						 					
+		
+		System.out.println("Average: " + sumStats.getAverage());
+		System.out.println("Max: " + sumStats.getMax());
+		System.out.println("Min: " + sumStats.getMin());
+		System.out.println("Count: " + sumStats.getCount());
+		
+		
+		
+		
+//		example2();
+		
+//		example1();
+				
+	}
+
+
+
+	private static void example2() {
 		List<Car> cars = new ArrayList<>();
 		
 		cars.add(new Car("Tesla", "Model S", 2019));
@@ -56,11 +89,6 @@ public class StreamApplication {
 		System.out.println(brands);
 		System.out.println("-----------");
 		System.out.println(output);
-		
-		
-		
-//		example1();
-				
 	}
 
 
