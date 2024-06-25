@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.IntSummaryStatistics;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
@@ -15,6 +17,19 @@ public class StreamApplication {
 	
 	public static void main(String[] args) {
 		
+//		example4();
+		
+		
+		example3();
+		
+//		example2();
+		
+//		example1();
+				
+	}
+
+
+	private static void example4() {
 		List<List<Integer>> listOfNumbersList = new ArrayList<>();
 		listOfNumbersList.add(Arrays.asList(1,2,3)); 
 		listOfNumbersList.add(Arrays.asList(2,3,4)); 
@@ -23,6 +38,7 @@ public class StreamApplication {
 		
 		IntSummaryStatistics sumStats = listOfNumbersList.stream()
 		 						    .flatMap(x -> x.stream())
+//						 			The x-> x.intValue() is the same as Integer::intValue
 //						 			.mapToInt(x -> x.intValue())
 		 						    .mapToInt(Integer::intValue)
 									.summaryStatistics();
@@ -32,18 +48,42 @@ public class StreamApplication {
 		System.out.println("Max: " + sumStats.getMax());
 		System.out.println("Min: " + sumStats.getMin());
 		System.out.println("Count: " + sumStats.getCount());
-		
-		
-		
-		
-//		example2();
-		
-//		example1();
-				
 	}
 
 
-
+	private static void example3() {
+		List<Car> cars = new ArrayList<>();
+		
+		cars.add(new Car("Tesla", "Model S", 2019));
+		cars.add(new Car("Tesla", "Model S", 2018));
+		cars.add(new Car("Tesla", "Model X", 2016));
+		cars.add(new Car("Tesla", "Model 3", 2019));
+		cars.add(new Car("Ford", "F150", 2017));
+		cars.add(new Car("Toyota", "Corolla", 1997));
+		cars.add(new Car("Toyota", "Celica", 2002));
+		
+		// Tesla, Ford, Toyota
+		// Tesla -> ["Model S 2019", "Model S 2018", "Model X 2016", "Model 3 2019"]
+		// Ford -> ["F150 2017"]
+		// Toyota -> ["Corolla 1997", "Celica 2002"]
+		
+		
+		Map<String, List<Car>> groupedByBrand = cars.stream()
+			.collect(Collectors.groupingBy((car) -> car.getBrand()));
+		
+		System.out.println(groupedByBrand);
+		
+		Set<Entry<String, List<Car>>> entrySet = groupedByBrand.entrySet();
+		
+		System.out.println(entrySet);
+		
+		entrySet.stream()
+				.forEach((entry) -> {
+					System.out.println(entry.getKey() + " -> " + entry.getValue());
+				});	
+	
+	}
+	
 	private static void example2() {
 		List<Car> cars = new ArrayList<>();
 		
@@ -54,6 +94,16 @@ public class StreamApplication {
 		cars.add(new Car("Ford", "F150", 2017));
 		cars.add(new Car("Toyota", "Corolla", 1997));
 		cars.add(new Car("Toyota", "Celica", 2002));
+		
+		// Tesla, Ford, Toyota
+		// Tesla -> ["Model S 2019", "Model S 2018", "Model X 2016", "Model 3 2019"]
+		// Ford -> ["F150 2017"]
+		// Toyota -> ["Corolla 1997", "Celica 2002"]
+		
+		
+		cars.stream()
+			.collect(Collectors.groupingBy((car) -> car.getBrand()));
+		
 		
 		List<String> models = cars.stream()
 								  .map(car -> car.getModel())
