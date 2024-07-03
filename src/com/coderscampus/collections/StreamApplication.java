@@ -19,7 +19,6 @@ public class StreamApplication {
 		
 //		example4();
 		
-		
 		example3();
 		
 //		example2();
@@ -69,7 +68,7 @@ public class StreamApplication {
 		
 		
 		Map<String, List<Car>> groupedByBrand = cars.stream()
-			.collect(Collectors.groupingBy((car) -> car.getBrand()));
+													.collect(Collectors.groupingBy((car) -> car.getBrand()));
 		
 		System.out.println(groupedByBrand);
 		
