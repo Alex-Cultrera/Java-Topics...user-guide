@@ -51,7 +51,7 @@ public class TheFileReader {
 			e.printStackTrace();
 		}		
 		
-		// the below method could be uses along with a User constructor to inpur contents of file into an array
+		// the below method could be used along with a User constructor to input contents of file into an array
 		/*
 		User[] users = new User[totalUsers];
 		try (BufferedReader buffReader = new BufferedReader(new FileReader(fileName))) {

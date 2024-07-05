@@ -10,22 +10,24 @@ import java.util.List;
 public class FileService {
 
 	String filename;
+	String header;
+	List<SuspectLocation> mySuspects = new ArrayList<>();
 	
-	public List<SuspectLocation> readFiles(String filename) throws IOException {
-		List<SuspectLocation> mySuspects = new ArrayList<>();
+	public void updateListOfSuspects(String filename) throws IOException {
 		BufferedReader reader = null;
 		try {
 			reader = new BufferedReader(new FileReader(filename));
 			String line;
-			String header;
-			while ((line = reader.readLine()) != null) {
-				
+			while ((header = reader.readLine()) != null) {
+				while ((line = reader.readLine()) != null) {
+					String[] lineData = line.split(", ");
+					SuspectLocation suspect = new SuspectLocation(lineData [0], lineData[1]);
+					mySuspects.add(suspect);
+				}
+				reader.close();
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		
-		return null;
 	}
-	
 }
