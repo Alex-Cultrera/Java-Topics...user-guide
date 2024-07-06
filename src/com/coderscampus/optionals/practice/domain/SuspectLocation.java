@@ -1,5 +1,6 @@
 package com.coderscampus.optionals.practice.domain;
 
+
 public class SuspectLocation {
 	String name;
 	String country;
@@ -16,9 +17,9 @@ public class SuspectLocation {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	public SuspectLocation(String name, String country) {
+	public SuspectLocation(String country, String name) {
 		this.name = name;
 		this.country = country;
 	}
-	
+
 }
