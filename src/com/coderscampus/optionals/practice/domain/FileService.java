@@ -39,7 +39,7 @@ public class FileService {
 								.filter(suspect -> suspect.getName().equalsIgnoreCase("Carmen Sandiego"))
 								.findAny();
 		locationOfCarmen.ifPresentOrElse(suspect -> System.out.println("Carmen Sandiego is in " + suspect.getCountry()), () -> System.out.println("Galdang, just missed her!"));
-		
+//		locationOfCarmen.ifPresent(suspect -> System.out.println("Carmen Sandiego is in " + suspect.getCountry()));
 	}
 	
 }
