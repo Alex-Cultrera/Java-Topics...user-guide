@@ -15,6 +15,7 @@ package com.coderscampus.dates.and.times.practice;
 		private final static ZoneId BRISBANE = ZoneId.of("Australia/Brisbane");
 		private final static ZoneId DUBLIN = ZoneId.of("Europe/Dublin");
 		private final static ZoneId TORONTO = ZoneId.of("America/Toronto");
+		private final static ZoneId RIO = ZoneId.of("Brazil/East");
 
 		public static void main(String[] args) {
 			
@@ -24,23 +25,32 @@ package com.coderscampus.dates.and.times.practice;
 			// from here you will need to create three system outs to print out the times and dates
 			// ZonedDateTime has a method called withZoneSameInstant(<ZoneId>) which gives you the exact date time in the
 			// time zone you put in using the zone id.  Try putting in zonedDateTime.withZoneSameInstant(BRISBANE)...
-			System.out.println("World Clock: ");
+			System.out.println("\nWorld Clock: ");
 			System.out.println("Local date & time: " + zonedDateTime);
 			System.out.println("Date/Time in Toronto, Canada: " + zonedDateTime.withZoneSameInstant(TORONTO));
 			System.out.println("Date/Time in Brisbane, Australia: " + zonedDateTime.withZoneSameInstant(BRISBANE));
 			System.out.println("Date/Time in Dublin, Ireland: " + zonedDateTime.withZoneSameInstant(DUBLIN));
+			System.out.println("Date/Time in Rio de Janeiro, Brazil: " + zonedDateTime.withZoneSameInstant(RIO));
 			
 			// after we grabbed the time in our country, we need to format the output using our DateTimeFormatter...
 			
 			// we need to format it in a way that is easily readable, for this assignment, use FormatStyle.MEDIUM
 			
 			// ... .format(DateTImeFormatter.ofLocalizedDateTIme(FormatStyle.MEDIUM));
-			System.out.println("Now, formatted: ");
+			System.out.println("\nNow, formatted: ");
 			System.out.println("Local date & time: " + zonedDateTime.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM)));
 			System.out.println("Date/Time in Toronto, Canada: " + zonedDateTime.withZoneSameInstant(TORONTO).format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM)));
 			System.out.println("Date/Time in Brisbane, Australia: " + zonedDateTime.withZoneSameInstant(BRISBANE).format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM)));
 			System.out.println("Date/Time in Dublin, Ireland: " + zonedDateTime.withZoneSameInstant(DUBLIN).format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM)));
+			System.out.println("Date/Time in Rio de Janeiro, Brazil: " + zonedDateTime.withZoneSameInstant(RIO).format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM)));
 
+			// ... date format should be as follows: yyyy-MM-dd hh:mm a
+			System.out.println("\nNow, formatted again: ");
+			System.out.println("Local date & time: " + zonedDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm a")));
+			System.out.println("Date/Time in Toronto, Canada: " + zonedDateTime.withZoneSameInstant(TORONTO).format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm a")));
+			System.out.println("Date/Time in Brisbane, Australia: " + zonedDateTime.withZoneSameInstant(BRISBANE).format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm a")));
+			System.out.println("Date/Time in Dublin, Ireland: " + zonedDateTime.withZoneSameInstant(DUBLIN).format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm a")));
+			System.out.println("Date/Time in Rio de Janeiro, Brazil: " + zonedDateTime.withZoneSameInstant(RIO).format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm a")));
 
 	}
 
