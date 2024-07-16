@@ -15,6 +15,9 @@ public class EnumApplication {
 			System.out.println("User is active");
 		}
 		
+		user.setStatus(Status.INACTIVE);
+		System.out.println(user.getStatus());
+		
 		System.out.println("Ace primary value is: " + Card.ACE.getCardValue());
 		System.out.println("Ace secondary value is: " + Card.ACE.getCardSecondaryValue());
 		

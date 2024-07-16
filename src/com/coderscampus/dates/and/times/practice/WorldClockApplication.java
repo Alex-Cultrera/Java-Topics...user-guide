@@ -27,9 +27,9 @@ package com.coderscampus.dates.and.times.practice;
 			// time zone you put in using the zone id.  Try putting in zonedDateTime.withZoneSameInstant(BRISBANE)...
 			System.out.println("\nWorld Clock: ");
 			System.out.println("Local date & time: " + zonedDateTime);
-			System.out.println("Date/Time in Toronto, Canada: " + zonedDateTime.withZoneSameInstant(TORONTO));
-			System.out.println("Date/Time in Brisbane, Australia: " + zonedDateTime.withZoneSameInstant(BRISBANE));
-			System.out.println("Date/Time in Dublin, Ireland: " + zonedDateTime.withZoneSameInstant(DUBLIN));
+			System.out.println("Toronto, Canada: " + zonedDateTime.withZoneSameInstant(TORONTO));
+			System.out.println("Brisbane, Australia: " + zonedDateTime.withZoneSameInstant(BRISBANE));
+			System.out.println("Dublin, Ireland: " + zonedDateTime.withZoneSameInstant(DUBLIN));
 			System.out.println("Date/Time in Rio de Janeiro, Brazil: " + zonedDateTime.withZoneSameInstant(RIO));
 			
 			// after we grabbed the time in our country, we need to format the output using our DateTimeFormatter...
