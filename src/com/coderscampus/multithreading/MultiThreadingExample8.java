@@ -14,14 +14,14 @@ public class MultiThreadingExample8 {
 		System.out.println(message);
 		System.out.println("Thread-" + Thread.currentThread().getName());
 		
-//		ExecutorService executor = Executors.newSingleThreadExecutor();
+		ExecutorService cpuBoundTask = Executors.newSingleThreadExecutor();
+		ExecutorService ioBoundTask = Executors.newCachedThreadPool();
 		
-
 		for (int i = 0; i < 20; i++) {
-			CompletableFuture.supplyAsync(() -> new SomeTaskWithExample8())
-							 .thenApply(someTask -> someTask.doSomeWork()) 
-							 .thenApply(someTask -> someTask.markComplete())
-							 .thenAccept(dto -> System.out.println(dto)); 
+			CompletableFuture.supplyAsync(() -> new SomeTaskWithExample8(), ioBoundTask)
+							 .thenApplyAsync(someTask -> someTask.doSomeWork(), cpuBoundTask) 
+							 .thenApplyAsync(someTask -> someTask.markComplete(), ioBoundTask)
+							 .thenAcceptAsync(dto -> System.out.println(dto), ioBoundTask); 
 		}
 
 		message = "Done";
