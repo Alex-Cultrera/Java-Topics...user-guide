@@ -2,10 +2,25 @@
 
 A reference library I created covering various concepts and topics in Java with descriptions and examples
 
-## Table of Contents
+## Featured Topics
 
-- [Annotations<a href="https://github.com/Alex-Cultrera/Java-Topics...user-guide/tree/master/src/com/coderscampus/annotations">](#annotations)
-- [Arrays](#arrays)
-- [ArraySort](#arraysort)
-- [Collections](#collections)
-- [Dates and Times](#datesandtimes)
+- Annotations
+- Arrays
+- Sorting Arrays
+- Collections
+- Dates and Times
+- Enums
+- File Reader
+- Generics
+- if and else statements
+- Loops
+- Multithreading
+- Non-primitive data types
+- Optionals
+- POJOs
+- Primitive data types
+- Random Number
+- Reflection
+- Scanner
+- Streams
+- Switch statements
